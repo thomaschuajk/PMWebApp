@@ -1,0 +1,36 @@
+<div style="border: 2px dash blue;">
+    <h2>Meetings List</h2>
+     <br>
+ 
+     <!-- <ul *ngFor="let prod of products">
+         <li>{{prod.productName}},{{prod.price}}</li>
+     </ul> -->
+ 
+     <div *ngIf="meetings.length>0;else elseBlock">
+         <table border="2">
+ 
+             <thead>
+                 <tr>
+                     <th>S/N</th>                     
+                     <th>Start Time</th>
+                     <th>Meeting Topic</th>
+                     <th>Number Of Attendees</th>
+                     <th>Client</th>
+                     <th>Cancel Meeting</th>
+                 </tr>
+             </thead>
+ 
+             <tr *ngFor="let meeting of meetings; index as i">
+                 <td> {{i+1}}</td>
+                 <td> {{meeting.startTime}}</td>
+                 <td> {{meeting.topic}}</td>
+                 <td> {{meeting.paxNum}}</td>
+                 <td> {{meeting.client}}</td>
+                 <td> <button (click)="removeMeeting(meeting.startTime,meeting.topic)">Remove</button></td>
+             </tr>
+ 
+         </table>
+     </div>
+      
+     <ng-template #elseBlock> No Meeting Created </ng-template >
+ 

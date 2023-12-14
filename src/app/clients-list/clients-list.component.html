@@ -1,0 +1,31 @@
+<div style="border: 2px dash blue;">
+   <h2>Clients List</h2>
+    <br>
+
+    <!-- <ul *ngFor="let prod of products">
+        <li>{{prod.productName}},{{prod.price}}</li>
+    </ul> -->
+
+    <div *ngIf="clients.length>0;else elseBlock">
+        <table border="2" >
+
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+
+            <tr *ngFor="let client of clients; index as i">
+                <td> {{i+1}}</td>
+                <td> {{client.name}}</td>
+                <td> {{client.email}}</td>
+                <td> {{client.address}}</td>
+            </tr>
+
+        </table>
+    </div>
+     
+    <ng-template #elseBlock> No Client Registered </ng-template >

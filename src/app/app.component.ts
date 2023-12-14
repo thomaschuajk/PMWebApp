@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { ClientFormComponent } from './client-form/client-form.component';
-import { MeetingFormComponent } from './meeting-form/meeting-form.component'
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { AddClientComponent } from './add-client/add-client.component';
+import { CreateMeetingComponent } from './create-meeting/create-meeting.component';
+import { ClientsListComponent } from './clients-list/clients-list.component'
+import { routes } from './app.routes';
+import { MeetingsListComponent } from './meetings-list/meetings-list.component';
 
 @Component({
   selector: 'app',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ClientFormComponent, MeetingFormComponent],
+  imports: [CommonModule, RouterOutlet, RouterModule, AddClientComponent, CreateMeetingComponent, ClientsListComponent, MeetingsListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
   title = 'c1-proj';
+
 }

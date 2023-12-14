@@ -1,0 +1,45 @@
+<div>
+    <h2>Schedule A Meeting</h2>
+<br>
+
+<!-- registration-form.component.html -->
+
+<form [formGroup]="meetingForm">
+    
+    <div class="form-group">
+      <label for="meetingClientName">Name:</label>
+      <select formControlName="meetingClientName" required>
+        <option *ngFor="let clientName of clientsNames" [value]="clientName">{{ clientName }}</option>
+      </select>
+    </div>  
+    <br>
+    <div class="form-group">
+      <label for="meetingTopic">Topic:</label>
+      <br>
+      <input type="text" id="meetingTopic" formControlName="meetingTopic" required>
+      <div *ngIf="meetingForm.get('meetingTopic')?.hasError('required')" class="error-message">Meeting Topic is
+        required.</div>
+      <div *ngIf="meetingForm.get('meetingTopic')?.hasError('minlength')" class="error-message">Meeting Topic must
+        be at least 3 characters long.</div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="meetingPaxNum">Number of Attendees</label>
+      <br>
+      <input type="email" id="meetingPaxNum" formControlName="meetingPaxNum" required>
+      <div *ngIf="meetingForm.get('meetingPaxNum')?.hasError('required')" class="error-message">Number of Attendees is
+        required.</div>
+    </div>
+    <br>  
+    <div class="form-group">
+      <label for="meetingTime">Start Time</label>
+      <br>
+      <input type="datetime-local" id="meetingTime" formControlName="meetingTime" required >
+      <div *ngIf="meetingForm.get('meetingTime')?.hasError('required')" class="error-message">Meeting Time is
+        required.</div>
+    </div>
+    <br>  
+    <button (click)="createMeeting()" [disabled]="meetingForm.invalid">Schedule Meeting</button>
+  </form>
+
+</div>

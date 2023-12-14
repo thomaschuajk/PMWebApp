@@ -1,0 +1,54 @@
+<div>
+    <h2>Register A Client</h2>
+<br>
+
+<!-- registration-form.component.html -->
+
+<form [formGroup]="clientForm">
+    <div class="form-group">
+      <label for="clientName">Name:</label>
+      <br>
+      <input type="text" id="clientName" formControlName="clientName" required>
+      <div *ngIf="clientForm.get('clientName')?.hasError('required')" class="error-message">Client Name is
+        required.</div>
+      <div *ngIf="clientForm.get('clientName')?.hasError('minlength')" class="error-message">Client Name must
+        be at least 3 characters long.</div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="clientEmail">Email:</label>
+      <br>
+      <input type="email" id="clientEmail" formControlName="clientEmail" required ngModel="email">
+      <div *ngIf="clientForm.get('clientEmail')?.hasError('required')" class="error-message">
+        Client email is required        
+      </div>
+      <div *ngIf="clientForm.get('clientEmail')?.hasError('email')" class="error-message">
+        Please enter a valid email       
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <br>
+      <input type="text" id="clientAddress" formControlName="clientAddress" >
+    </div>
+    <br>  
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <br>
+      <input type="password" id="clientPassword" formControlName="clientPassword" required>
+    </div>
+    <br>  
+    <div  class="form-group">
+      <label for="confirmPassword">Confirm Password:</label>
+      <br>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" required>
+      <div *ngIf="clientForm.get('clientPassword')!==clientForm.get('confirmPassword')" class="error-message">
+        Passwords do not match     
+      </div>
+    </div>
+    <br>  
+    <button (click)="addClient()" [disabled]="clientForm.invalid">Register</button>
+  </form>
+
+</div>
